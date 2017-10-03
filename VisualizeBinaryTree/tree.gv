@@ -1,0 +1,17 @@
+digraph binaryTree {
+    node [fontname="Arial"];
+    node{5} -> node{4};
+    node{4} -> node{3};
+    node{3} -> node{2};
+    node{3} -> node{2};
+    node{4} -> node{3};
+    node{3} -> node{2};
+    node{3} -> node{1};
+    node{5} -> node{4};
+    node{4} -> node{3};
+    node{3} -> node{1};
+    node{3} -> node{1};
+    node{4} -> node{22};
+    node{22} -> node{1};
+    node{22} -> node{1};
+}
