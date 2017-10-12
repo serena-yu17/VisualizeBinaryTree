@@ -1,8 +1,24 @@
 digraph binaryTree {
     node [fontname="Arial"];
     node0 [label="5"];
-    node1 [label="4"];
+    node1 [label="53"];
     node0 -> node1;
-    null-2122331568 [shape=point, ];
-    node0 -> null-2122331568;
+    node2 [label="33"];
+    node1 -> node2;
+    node3 [label="49"];
+    node2 -> node3;
+    node4 [label="51"];
+    node2 -> node4;
+    node5 [label="38"];
+    node1 -> node5;
+    node6 [label="61"];
+    node5 -> node6;
+    null0 [shape=point, ];
+    node5 -> null0;
+    node7 [label="62"];
+    node0 -> node7;
+    node8 [label="65"];
+    node7 -> node8;
+    node9 [label="97"];
+    node7 -> node9;
 }

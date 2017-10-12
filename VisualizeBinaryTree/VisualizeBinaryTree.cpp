@@ -114,8 +114,8 @@ void recPrintNode(FILE* fs, TreeNode* node, int* nodeCount, int* nullCount)
 		fprintf(fs, "    node%d -> node%d;\n", currentnode, *nodeCount);
 		if (!node->right)
 		{
-			fprintf(fs, "    null%d [shape=point, ];\n", nullCount);
-			fprintf(fs, "    node%d -> null%d;\n", currentnode, nullCount);
+			fprintf(fs, "    null%d [shape=point, ];\n", *nullCount);
+			fprintf(fs, "    node%d -> null%d;\n", currentnode, *nullCount);
 			*nullCount++;
 		}
 		recPrintNode(fs, node->left, nodeCount, nullCount);
@@ -126,8 +126,8 @@ void recPrintNode(FILE* fs, TreeNode* node, int* nodeCount, int* nullCount)
 		fprintf(fs, "    node%d -> node%d;\n", currentnode, *nodeCount);
 		if (!node->left)
 		{
-			fprintf(fs, "    null%d [shape=point, ];\n", nullCount);
-			fprintf(fs, "    node%d -> null%d;\n", currentnode, nullCount);
+			fprintf(fs, "    null%d [shape=point, ];\n", *nullCount);
+			fprintf(fs, "    node%d -> null%d;\n", currentnode, *nullCount);
 			*nullCount++;
 		}
 		recPrintNode(fs, node->right, nodeCount, nullCount);
@@ -169,7 +169,7 @@ int main()
 		if (num.size())
 			root = buildTree(num);
 		print_dot(root);
-		system("dot -Tsvg ./tree.gv -o graph1.svg ");
+		system("dot -Tsvg ./tree.gv -o graph1.svg");
 		system("graph1.svg");
 	}
 	return 0;
