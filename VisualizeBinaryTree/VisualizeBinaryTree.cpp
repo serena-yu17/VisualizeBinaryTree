@@ -13,7 +13,7 @@ struct TreeNode {
 	struct TreeNode *left;
 	struct TreeNode *right;
 	TreeNode(int x) : val(x), left(NULL), right(NULL) {}
-	TreeNode(): left(NULL), right(NULL) {}
+	TreeNode() : left(NULL), right(NULL) {}
 };
 
 std::vector<int> getint(std::string s) {
@@ -21,24 +21,35 @@ std::vector<int> getint(std::string s) {
 		return std::vector<int>();
 	std::vector<int> nums;
 	int i = 0;
+	int neg = 0;
 	while (i < s.size())
 	{
 		int buffer = 0;
 		int found = 0;
-		while (i < s.size() && (isdigit(s[i]) || s[i] == '-'))
+		if (s[i] == '-')
 		{
-			buffer *= 10;
-			buffer += s[i] - '0';
-			i++;
-			found = 1;
+			neg = 1;
 		}
-		if (found)
+		else if (isdigit(s[i]))
+		{
+			while (i < s.size() && isdigit(s[i]))
+			{
+				buffer *= 10;
+				buffer += s[i] - '0';
+				i++;
+			}
+			if (neg)
+				buffer = -buffer;
 			nums.push_back(buffer);
-		if (i < s.size() - 4 && s[i] == 'n' && s[i + 1] == 'u' && s[i + 2] == 'l' && s[i + 3] == 'l')
+			neg = 0;
+		}
+		else if (i < s.size() - 4 && s[i] == 'n' && s[i + 1] == 'u' && s[i + 2] == 'l' && s[i + 3] == 'l')
 		{
 			nums.push_back(INT_MIN);
 			i += 4;
 		}
+		else
+			neg = 0;
 		i++;
 	}
 	return nums;
@@ -95,7 +106,7 @@ TreeNode* buildTree(const vector<int>& num)
 }
 
 void recPrintNode(FILE* fs, TreeNode* node, int* nodeCount, int* nullCount)
-{	
+{
 	int currentnode = *nodeCount;
 	if (node->left)
 	{
